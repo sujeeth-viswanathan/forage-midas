@@ -1,6 +1,7 @@
 package com.jpmc.midascore.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class UserRecord {
@@ -12,13 +13,13 @@ public class UserRecord {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private float balance;
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal balance;
 
     protected UserRecord() {
     }
 
-    public UserRecord(String name, float balance) {
+    public UserRecord(String name, BigDecimal balance) {
         this.name = name;
         this.balance = balance;
     }
@@ -36,11 +37,11 @@ public class UserRecord {
         return name;
     }
 
-    public float getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 }
